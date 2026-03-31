@@ -10,8 +10,73 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">CryptoTracker</a>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="menu" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="favoritos.html">Favoritos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfólio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="home">
+        <div>
+            <div class="container">
+                <h1 class="fw-bold">Favoritos
+                    <span class="badge bg-primary rounded-pill fs-6 px-2 py-2">14</span>
+                </h1>
+                <h5 class="fw-lighter">Acompanhe as cryptos que você mais gosta.</h5>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Bitcoin</h5>
+                            <i class="bi bi-star"></i>
+
+                        </div>
+                        <h6 class=" text-secondary">BTC</h6>
+                        <p class="text-danger">-8.45%</p>
+                        <h4>US$ 61,250.32</h4>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary btn-sm px-3">Remover</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Ethereum</h5>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <h6 class=" text-secondary">ETH</h6>
+                        <p class="text-danger">-7.22%</p>
+                        <h4>US$ 1,767.55</h4>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary btn-sm px-3">Remover</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
