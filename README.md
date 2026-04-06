@@ -1,3 +1,27 @@
+## 🚀 Tecnologias Utilizadas
+
+### 🧩 Framework
+- Bootstrap 5.3.2
+
+### 🌐 API
+-CoinGecko API
+
+---
+
+## 🎯 Justificativa das escolhas
+
+### Framework (Bootstrap 5.3.2)
+O Bootstrap foi escolhido por permitir o desenvolvimento rápido de interfaces responsivas e modernas, com um sistema de grid eficiente e componentes prontos. Isso reduz o tempo de desenvolvimento e garante um padrão visual consistente.
+
+### API  (CoinGecko)
+A API foi escolhida por ser gratuita, confiável e fornecer dados atualizados em tempo real. Isso permite criar uma aplicação com valor real para o usuário, especialmente em cenários como monitoramento de dados (ex: criptomoedas e moedas).
+
+---
+
+## 💡 Objetivo do Projeto
+Monitorar o mercado crypto e também um portifólio com compras, vendas, lucro e prejuízo.
+
+
 ## 📋 Checklist de Indicadores de Desempenho
 
 ### 🎨 RA1 - Layout Responsivo e CSS
