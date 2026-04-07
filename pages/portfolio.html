@@ -11,7 +11,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">CryptoTracker</a>
 
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </nav>
-    <div class="container my-4">
+    <div class="container-fluid my-4">
 
         <div class="card p-3 mb-4">
             <h6 class="fw-bold mb-3">Adicionar Transação</h6>
@@ -44,7 +44,8 @@
                     </select>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
                     <input type="number" class="form-control" placeholder="Quantidade">
                 </div>
 
@@ -52,80 +53,84 @@
                     <input type="number" class="form-control" placeholder="Preço (USD)">
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
                     <input type="date" class="form-control">
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
                     <button class="btn btn-primary w-100">Adicionar</button>
                 </div>
             </div>
         </div>
 
 
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card p-3">
+        <div class="row mb-4 ">
+            <div class="col-md-4 ">
+                <div class="card p-3 mb-2">
                     <small>VALOR TOTAL</small>
                     <h5 class="fw-bold">$ 9,227.00</h5>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card p-3">
+                <div class="card p-3 mb-2">
                     <small>LUCRO / PREJUÍZO (24H)</small>
                     <h5 class="text-success fw-bold">+ $ 82.30</h5>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card p-3">
+                <div class="card p-3 mb-2">
                     <small>MOEDAS ATIVAS</small>
                     <h5 class="fw-bold">4</h5>
                 </div>
             </div>
         </div>
 
-        <div class="card p-3">
-            <h6 class="fw-bold mb-3">Minhas Criptomoedas</h6>
+        <div class="card p-3 col-md-12 ">
+            <h6 class="fw-bold mb-3 ">Minhas Criptomoedas</h6>
 
-            <table class="table align-middle">
-                <thead>
-                    <tr>
-                        <th>Moeda</th>
-                        <th>Quantidade</th>
-                        <th>Preço Médio</th>
-                        <th>Valor Atual</th>
-                        <th>Lucro/Prejuízo</th>
-                    </tr>
-                </thead>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Moeda</th>
+                            <th>Quantidade</th>
+                            <th>Preço Médio</th>
+                            <th>Valor Atual</th>
+                            <th>Lucro/Prejuízo</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td><strong>Bitcoin</strong><br><small>BTC</small></td>
-                        <td>0.15 BTC</td>
-                        <td>$ 42,000.00</td>
-                        <td>$ 9,450.00</td>
-                        <td><span class="badge bg-success">+15.2%</span></td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bitcoin</strong><br><small>BTC</small></td>
+                            <td>0.15 BTC</td>
+                            <td>$ 42,000.00</td>
+                            <td>$ 9,450.00</td>
+                            <td><span class="badge bg-success">+15.2%</span></td>
+                        </tr>
 
-                    <tr>
-                        <td><strong>Ethereum</strong><br><small>ETH</small></td>
-                        <td>1.20 ETH</td>
-                        <td>$ 2,500.00</td>
-                        <td>$ 2,880.00</td>
-                        <td><span class="badge bg-danger">-4.1%</span></td>
-                    </tr>
+                        <tr>
+                            <td><strong>Ethereum</strong><br><small>ETH</small></td>
+                            <td>1.20 ETH</td>
+                            <td>$ 2,500.00</td>
+                            <td>$ 2,880.00</td>
+                            <td><span class="badge bg-danger">-4.1%</span></td>
+                        </tr>
 
-                    <tr>
-                        <td><strong>Solana</strong><br><small>SOL</small></td>
-                        <td>10.0 SOL</td>
-                        <td>$ 110.00</td>
-                        <td>$ 1,120.00</td>
-                        <td><span class="badge bg-success">+1.8%</span></td>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr>
+                            <td><strong>Solana</strong><br><small>SOL</small></td>
+                            <td>10.0 SOL</td>
+                            <td>$ 110.00</td>
+                            <td>$ 1,120.00</td>
+                            <td><span class="badge bg-success">+1.8%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="text-center">
                 <a href="#" class="text-primary text-decoration-none">Ver todas as transações</a>

@@ -1,0 +1,30 @@
+{
+  "name": "crypto-tracker",
+  "version": "1.0.0",
+  "description": "* [x] ID 01 - Protótipo adaptável (mobile e desktop)\r * [x] ID 02 - Layout com Framework CSS\r * [ ] ID 03 - Layout com CSS puro (Flexbox/Grid)\r * [x] ID 04 - Uso de componentes do framework\r * [ ] ID 05 - Uso de unidades relativas\r * [ ] ID 06 - Design System consistente\r * [ ] ID 07 - Uso de Sass (SCSS)\r * [x] ID 08 - Tipografia responsiva\r * [x] ID 09 - Responsividade de imagens\r * [ ] ID 10 - Otimização de imagens",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielbucz/crypto-portfolio-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielbucz/crypto-portfolio-tracker/issues"
+  },
+  "homepage": "https://github.com/gabrielbucz/crypto-portfolio-tracker#readme",
+  "dependencies": {
+    "jquery": "^4.0.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

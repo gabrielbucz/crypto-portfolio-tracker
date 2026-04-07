@@ -26,15 +26,15 @@ Monitorar o mercado crypto e também um portifólio com compras, vendas, lucro e
 
 ### 🎨 RA1 - Layout Responsivo e CSS
 
-* [ ] ID 01 - Protótipo adaptável (mobile e desktop)
-* [ ] ID 02 - Layout com Framework CSS
+* [x] ID 01 - Protótipo adaptável (mobile e desktop)
+* [x] ID 02 - Layout com Framework CSS
 * [ ] ID 03 - Layout com CSS puro (Flexbox/Grid)
-* [ ] ID 04 - Uso de componentes do framework
+* [x] ID 04 - Uso de componentes do framework
 * [ ] ID 05 - Uso de unidades relativas
 * [ ] ID 06 - Design System consistente
 * [ ] ID 07 - Uso de Sass (SCSS)
-* [ ] ID 08 - Tipografia responsiva
-* [ ] ID 09 - Responsividade de imagens
+* [x] ID 08 - Tipografia responsiva
+* [x] ID 09 - Responsividade de imagens
 * [ ] ID 10 - Otimização de imagens
 
 ---
@@ -50,10 +50,10 @@ Monitorar o mercado crypto e também um portifólio com compras, vendas, lucro e
 
 ### ⚙️ RA3 - Processo de Desenvolvimento
 
-* [ ] ID 15 - Ambiente com Node/NPM
-* [ ] ID 16 - Versionamento com Git/GitHub
-* [ ] ID 17 - README padronizado
-* [ ] ID 18 - Organização modular de arquivos
+* [x] ID 15 - Ambiente com Node/NPM
+* [x] ID 16 - Versionamento com Git/GitHub
+* [x] ID 17 - README padronizado
+* [x] ID 18 - Organização modular de arquivos
 * [ ] ID 19 - Uso de ESLint/Prettier
 
 ---

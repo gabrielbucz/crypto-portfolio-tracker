@@ -1,0 +1,36 @@
+.home {
+    padding: 30px 0;
+    margin-bottom: 1rem;
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.star-icon {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-icon:hover {
+    color: #ffc107 !important;
+}
+
+.btn-primary {
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+
+
+footer {
+    margin-top: auto;
+}
