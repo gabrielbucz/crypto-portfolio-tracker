@@ -1,0 +1,104 @@
+// Estilo dos cards para o modo claro
+@use "variables" as *;
+@use "mixins" as *;
+
+.crypto-card {
+    @include smooth-transition;
+    border: 1px solid $card-border-color !important;
+    background-color: $card-bg;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); // Sombra leve
+
+    &:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+// Imagens das moedas (ajustando o tamanho para o padrão da imagem)
+.crypto-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+// Estrela de favoritos (cinza quando vazia)
+.estrela {
+    color: #dee2e6;
+
+    &.ativa {
+        color: #ffc107; // Amarelo Bootstrap
+    }
+}
+
+// Preços e Variações
+.crypto-price {
+    font-family: 'Monaco', 'Consolas', monospace; // Fonte de "dados"
+    letter-spacing: -0.5px;
+}
+
+// Faz o corpo da página ocupar a altura toda
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+// Faz o conteúdo principal (navbar + lista) crescer e empurrar o footer
+main,
+.home,
+.container-fluid {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0; // Impede o footer de "esmagar"
+    background-color: #0b0e11 !important; // Use a mesma cor do seu $body-bg
+}
+
+// scss/custom/_components.scss
+
+.table {
+
+    // Remove as bordas laterais para um look mais moderno
+    th,
+    td {
+        border-color: rgba(0, 0, 0, 0.05);
+        padding: 1.2rem 0.75rem;
+    }
+
+    thead th {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+}
+
+// scss/custom/_components.scss
+
+.form-label-custom {
+    display: block;
+    font-size: 0.75rem;
+    color: $text-muted; // Usando sua variável do Sass
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Garante que os inputs não fiquem gigantes no mobile
+.form-control-sm,
+.form-select-sm {
+    height: 35px;
+}
+
+// Ajuste para os cards de estatísticas (Valor Total, etc) no Mobile
+@media (max-width: 768px) {
+    .row.mb-4 .col-md-4 {
+        margin-bottom: 1rem;
+    }
+}

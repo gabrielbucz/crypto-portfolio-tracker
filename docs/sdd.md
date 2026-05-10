@@ -58,3 +58,30 @@ O sistema CryptoTracker tem como objetivo exibir informações em tempo real sob
 - Valores negativos devem ser exibidos em vermelho
 - Botões devem apresentar efeito visual ao passar o mouse
 - Interface deve ser responsiva para diferentes tamanhos de tela
+
+# Modelagem do Banco de Dados
+
+## Entidades
+
+### Usuário
+- id_usuario (PK)
+- nome
+- email
+
+### Criptomoeda
+- id_cripto (PK)
+- nome
+- sigla
+
+### Portfolio
+- id_portfolio (PK)
+- quantidade
+- id_usuario (FK)
+- id_cripto (FK)
+
+## Relacionamentos
+
+- Usuário 1:N Portfolio
+- Criptomoeda 1:N Portfolio
+
+A tabela usuario foi adicionada para permitir a associação de múltiplos portfólios a diferentes usuários, garantindo escalabilidade futura do sistema.

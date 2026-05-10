@@ -1,0 +1,7 @@
+// 1. Módulos (@use) SEMPRE no topo
+@use "custom/variables" as *;
+@use "custom/mixins" as *;
+@use "custom/components" as *;
+
+// 2. Imports de bibliotecas externas (Bootstrap) vêm depois
+@import "../node_modules/bootstrap/scss/bootstrap";
