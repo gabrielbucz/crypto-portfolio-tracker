@@ -2,6 +2,9 @@
 
 import { mostrarMoedas } from './ui.js';
 
+// cache compartilhado com portfolio.js
+export let moedasCache = [];
+
 
 // 🔹 CARREGAR PREÇOS (TOPO)
 export async function carregarPrecos() {
@@ -49,7 +52,9 @@ export async function carregarMoedas(favoritos = []) {
 
         const dados = await res.json();
 
-        // 👇 ESSENCIAL: passa favoritos pra UI
+        // salva no cache exportado
+        moedasCache = dados;
+
         mostrarMoedas(dados, favoritos);
 
     } catch (erro) {

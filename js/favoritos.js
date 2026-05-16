@@ -1,8 +1,8 @@
-// favoritos.js
-
 const URL = 'http://localhost:3000/favoritos';
 
-// 🔹 LISTAR FAVORITOS
+// ==========================
+// LISTAR FAVORITOS
+// ==========================
 export async function listarFavoritos() {
   try {
     const res = await fetch(URL);
@@ -13,34 +13,35 @@ export async function listarFavoritos() {
   }
 }
 
-
-// 🔹 SALVAR FAVORITO (COM VALIDAÇÃO)
-export async function salvarFavorito(moeda) {
+// ==========================
+// SALVAR FAVORITO
+// ==========================
+export async function salvarFavorito(moedaParaSalvar) {
   try {
-    // 🔸 busca favoritos atuais
-    const favoritos = await listarFavoritos();
-
-    // 🔸 verifica duplicado pelo id
-    const existe = favoritos.some(f => f.id === moeda.id);
-
-    if (existe) {
-      console.log('Já está nos favoritos');
-      return;
-    }
-
-    // 🔸 salva no JSON Server
     const res = await fetch(URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(moeda)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(moedaParaSalvar) // O main.js já entrega o objeto perfeito
     });
 
-    const data = await res.json();
-    console.log('Salvo:', data);
-
+    if (!res.ok) throw new Error('Erro ao salvar favorito');
+    return await res.json();
   } catch (erro) {
     console.error('Erro ao salvar favorito:', erro);
+  }
+}
+
+// ==========================
+// REMOVER FAVORITO
+// ==========================
+export async function removerFavorito(idBanco) {
+  try {
+    const res = await fetch(`${URL}/${idBanco}`, { // Remove diretamente usando o ID do banco
+      method: 'DELETE'
+    });
+
+    if (!res.ok) throw new Error('Erro ao remover favorito');
+  } catch (erro) {
+    console.error('Erro ao remover favorito:', erro);
   }
 }

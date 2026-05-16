@@ -13,11 +13,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">CryptoTracker</a>
-
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div id="menu" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -27,29 +25,23 @@
             </div>
         </div>
     </nav>
+
     <div class="home">
-        <div>
-            <div class="container">
-                <h1 class="fw-bold">Favoritos
-                    <span class="badge bg-primary rounded-pill fs-6 px-2 py-2">14</span>
-                </h1>
-                <h5 class="fw-lighter">Acompanhe as cryptos que você mais gosta.</h5>
+        <div class="container">
+            <h1 class="fw-bold">Favoritos
+                <span class="badge bg-primary rounded-pill fs-6 px-2 py-2">14</span>
+            </h1>
+            <h5 class="fw-lighter">Acompanhe as cryptos que você mais gosta.</h5>
 
-
-                <div id="listaCards" class="row g-3"></div>
-
-            </div>
-
-
+            <!-- ✅ Apenas UM elemento com este id -->
+            <div class="row g-4" id="listaCards"></div>
         </div>
     </div>
-    <div class="container">
-        <div class="row g-4" id="lista-favoritos"></div>
 
-        <script type="module" src="../js/main.js"></script>
-
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ✅ Scripts no lugar certo, antes do </body> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
 </body>
 
 </html>
