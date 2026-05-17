@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ==========================
 
 document.addEventListener("click", async (e) => {
-
+    console.log()
     const botao = e.target.closest(".btn-add");
 
     if (!botao) return;
@@ -107,8 +107,8 @@ document.addEventListener("click", async (e) => {
         const coin = JSON.parse(botao.dataset.coin);
         const favoritos = await listarFavoritos();
 
-        // CAPTURA BLINDADA DO ID: Procura por .id, .coinId, ou usa o .symbol como salvamento
-        const idOriginal = coin.id || coin.coinId || coin.symbol;
+        // CAPTURA BLINDADA DO ID: Prioriza coinId para não confundir com o id numérico do json-server
+        const idOriginal = coin.coinId || coin.id || coin.symbol;
 
         if (!idOriginal) {
             console.error("Não foi possível encontrar um identificador único para esta moeda no dataset:", coin);
@@ -123,6 +123,8 @@ document.addEventListener("click", async (e) => {
         // REMOVE 
         if (favoritoEncontrado) {
             // Mandamos o ID esquisito gerado pelo json-server que encontramos no banco
+            const arraySemIdRemovido = favoritos.filter(f => f.coinId !== idCripto)
+
             await removerFavorito(favoritoEncontrado.id);
         }
         // ADICIONA
@@ -132,7 +134,8 @@ document.addEventListener("click", async (e) => {
                 name: coin.name || "Não informado",
                 symbol: (coin.symbol || idCripto).toLowerCase(),
                 image: coin.image || "",
-                current_price: coin.current_price || 0
+                current_price: coin.current_price || 0,
+                price_change_percentage_24h: coin.price_change_percentage_24h ?? null
             };
             await salvarFavorito(moedaParaSalvar);
         }

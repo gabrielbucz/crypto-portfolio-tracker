@@ -1,22 +1,5 @@
 {
-  "favoritos": [
-    {
-      "coinId": "ethereum",
-      "name": "Ethereum",
-      "symbol": "eth",
-      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "current_price": 2178.18,
-      "id": "_mylY_dyWjI"
-    },
-    {
-      "coinId": "tether",
-      "name": "Tether",
-      "symbol": "usdt",
-      "image": "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661",
-      "current_price": 0.999515,
-      "id": "3jprIm_UYMs"
-    }
-  ],
+  "favoritos": [],
   "transacoes": [
     {
       "coinId": "bitcoin",
@@ -27,6 +10,16 @@
       "preco": 78182,
       "data": "2026-05-16",
       "id": "pu1VGp8VpgM"
+    },
+    {
+      "coinId": "ethereum",
+      "name": "Ethereum",
+      "symbol": "eth",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
+      "quantidade": 1,
+      "preco": 2190,
+      "data": "2026-05-17",
+      "id": "hmhCi-K3Xd4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

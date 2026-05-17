@@ -8,7 +8,8 @@
 function criarCard(moeda, favoritos = []) {
 
   // verifica se já está favoritado usando coinId (campo salvo no banco)
-  const idMoeda = String(moeda.id || moeda.coinId || moeda.symbol).toLowerCase().trim();
+  // Prioriza coinId para não confundir com o id numérico gerado pelo json-server
+  const idMoeda = String(moeda.coinId || moeda.id || moeda.symbol).toLowerCase().trim();
   const isFavorito =
     favoritos.some(f => f.coinId === idMoeda);
 
@@ -174,7 +175,7 @@ export function mostrarFavoritos(
 
     html += criarCard(
       moeda,
-      favoritos
+      favoritos  // passa a lista para que isFavorito seja calculado corretamente
     );
 
   });
