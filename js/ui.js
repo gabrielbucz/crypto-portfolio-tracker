@@ -5,6 +5,7 @@
 // CRIA CARD
 // ==========================
 
+import { getCurrentUser, logout } from './auth.js';
 function criarCard(moeda, favoritos = []) {
 
   // verifica se já está favoritado usando coinId (campo salvo no banco)
@@ -62,7 +63,7 @@ function criarCard(moeda, favoritos = []) {
 
           ${moeda.price_change_percentage_24h != null
       ? moeda.price_change_percentage_24h.toFixed(2) + '%'
-      : 'N/A'}
+      : '0%'}
 
         </p>
 
@@ -182,4 +183,28 @@ export function mostrarFavoritos(
 
   container.innerHTML = html;
 
+}
+
+export function topBar() {
+
+  const navAuthItem = document.getElementById('navAuthItem');
+  const user = getCurrentUser();
+
+  if (user) {
+    // Usuário logado → exibe nome + botão "Sair"
+    navAuthItem.innerHTML = `
+        <div class="d-flex align-items-center gap-2">
+          <span class="text-muted small">
+            <i class="bi bi-person-check-fill text-success me-1"></i>${user.name.split(' ')[0]}
+          </span>
+          <button id="btnLogout" class="btn btn-outline-danger btn-sm px-3">
+            <i class="bi bi-box-arrow-right me-1"></i>Sair
+          </button>
+        </div>
+      `;
+    document.getElementById('btnLogout').addEventListener('click', () => {
+      logout();
+      window.location.href = 'login.html';
+    });
+  }
 }

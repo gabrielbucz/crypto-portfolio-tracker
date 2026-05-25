@@ -12,7 +12,8 @@ import {
 } from './favoritos.js';
 
 import {
-    mostrarFavoritos
+    mostrarFavoritos,
+    topBar
 } from './ui.js';
 
 
@@ -89,6 +90,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         mostrarFavoritos(favoritos);
 
     }
+
+    topBar()
 
 });
 

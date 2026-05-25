@@ -1,25 +1,80 @@
 {
-  "favoritos": [],
-  "transacoes": [
+  "favoritos": [
     {
-      "coinId": "bitcoin",
-      "name": "Bitcoin",
-      "symbol": "btc",
-      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
-      "quantidade": 2,
-      "preco": 78182,
-      "data": "2026-05-16",
-      "id": "pu1VGp8VpgM"
+      "coinId": "solana",
+      "name": "Solana",
+      "symbol": "sol",
+      "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+      "current_price": 85.59,
+      "price_change_percentage_24h": 1.76458,
+      "id": "TWraEX7ODsE"
     },
     {
-      "coinId": "ethereum",
-      "name": "Ethereum",
-      "symbol": "eth",
-      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "quantidade": 1,
-      "preco": 2190,
-      "data": "2026-05-17",
-      "id": "hmhCi-K3Xd4"
+      "coinId": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "hype",
+      "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
+      "current_price": 63.28,
+      "price_change_percentage_24h": 9.78697,
+      "id": "I8IiZLSbtks"
+    }
+  ],
+  "transacoes": [
+    {
+      "coinId": "solana",
+      "name": "Solana",
+      "symbol": "sol",
+      "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+      "quantidade": 8,
+      "preco": 92,
+      "data": "2026-05-07",
+      "id": "uJZuuuuuAMs"
+    },
+    {
+      "coinId": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "hype",
+      "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
+      "quantidade": 43,
+      "preco": 24,
+      "data": "2026-05-14",
+      "id": "rVFHBA3y9BY"
+    },
+    {
+      "coinId": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "hype",
+      "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
+      "quantidade": 20,
+      "preco": 28,
+      "data": "2026-05-12",
+      "id": "LQ0j1di_nXM"
+    },
+    {
+      "coinId": "solana",
+      "name": "Solana",
+      "symbol": "sol",
+      "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+      "quantidade": 5,
+      "preco": 90,
+      "data": "2026-05-24",
+      "id": "I4xkS1N-W_w"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Demo User",
+      "email": "demo@cryptotracker.com",
+      "password": "demo123",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "name": "zezin rodrigo",
+      "email": "zezin@gmail.com",
+      "password": "123456",
+      "createdAt": "2026-05-18T23:51:35.668Z",
+      "id": "L_8Dj_JGf6w"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

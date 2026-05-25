@@ -1,0 +1,689 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   login.css — Estilos da página de autenticação do CryptoTracker
+   Identidade visual: dark, tech, glassmorphism — compatível com dashboard crypto
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Design Tokens (espelhando a paleta do projeto) ─────────────────────── */
+:root {
+    --ct-primary: #1850f9;
+    --ct-primary-glow: rgba(237, 241, 248, 0.35);
+    --ct-primary-dim: rgb(252, 253, 255);
+
+    --ct-bg: #e7e4e4;
+    --ct-bg-mid: #f8250a;
+    --ct-surface: rgba(12, 55, 247, 0.149);
+    --ct-surface-hover: rgba(247, 245, 250, 0.849);
+    --ct-border: rgba(255, 255, 255, 0.08);
+    --ct-border-focus: rgba(202, 206, 211, 0.808);
+
+    --ct-text: #2308f2;
+    --ct-text-muted: #020ef3;
+    --ct-text-subtle: #0657f8;
+
+    --ct-success: #3fb950;
+    --ct-success-dim: rgba(63, 185, 80, 0.15);
+    --ct-danger: #f85149;
+    --ct-danger-dim: rgba(248, 81, 73, 0.12);
+    --ct-warning: #ffc107;
+
+    --ct-radius: 14px;
+    --ct-radius-sm: 8px;
+    --ct-radius-pill: 999px;
+
+    --ct-shadow-card: 0 24px 64px rgba(139, 136, 136, 0.496), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --ct-shadow-glow: 0 0 40px rgb(255, 7, 7);
+
+    --ct-font-display: 'Space Mono', 'Courier New', monospace;
+    --ct-font-body: 'DM Sans', system-ui, sans-serif;
+
+    --ct-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ct-font-body);
+    background-color: var(--ct-bg);
+    color: var(--ct-text);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ─── Fundo animado com partículas / grade ───────────────────────────────── */
+.bg-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(87, 31, 254, 0.225) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 13, 253, 0.245) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgb(8, 8, 8) 40%, transparent 100%);
+}
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+    animation: floatOrb 12s ease-in-out infinite;
+}
+
+.bg-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(13, 109, 253, 0.666), transparent 70%);
+    top: -15%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.bg-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(18, 69, 251, 0.544), transparent 70%);
+    bottom: -10%;
+    right: -5%;
+    animation-delay: -6s;
+}
+
+.bg-orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(19, 77, 254, 0.838), transparent 70%);
+    top: 50%;
+    left: 60%;
+    animation-delay: -3s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -20px) scale(1.05);
+    }
+
+    66% {
+        transform: translate(-20px, 15px) scale(0.97);
+    }
+}
+
+/* Partículas flutuantes */
+.particles {
+    position: absolute;
+    inset: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--ct-primary);
+    opacity: 0;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20vh) scale(1.5);
+    }
+}
+
+/* ─── Tela principal ─────────────────────────────────────────────────────── */
+.auth-screen {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 460px;
+    padding: 1.25rem;
+    animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ─── Card glass ─────────────────────────────────────────────────────────── */
+.auth-card {
+    background: rgba(255, 255, 255, 0.874);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    box-shadow: var(--ct-shadow-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2.5rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgb(45, 73, 236), transparent);
+}
+
+/* ─── Cabeçalho ──────────────────────────────────────────────────────────── */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--ct-primary-dim);
+    border: 1px solid var(--ct-border-focus);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    color: var(--ct-primary);
+}
+
+.brand-name {
+    font-family: var(--ct-font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ct-text);
+    letter-spacing: 0.5px;
+}
+
+.brand-name span {
+    color: var(--ct-primary);
+}
+
+.auth-title {
+    font-family: var(--ct-font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ct-text);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+}
+
+.auth-subtitle {
+    font-size: 0.875rem;
+    color: var(--ct-text-muted);
+}
+
+/* ─── Badges de preço (decoração) ────────────────────────────────────────── */
+.ticker-bar {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.ticker-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--ct-radius-pill);
+    font-size: 0.7rem;
+    font-family: var(--ct-font-display);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1px solid transparent;
+}
+
+.ticker-badge.up {
+    background: rgba(63, 185, 80, 0.1);
+    border-color: rgba(63, 185, 80, 0.2);
+    color: var(--ct-success);
+}
+
+.ticker-badge.down {
+    background: rgba(248, 81, 73, 0.1);
+    border-color: rgba(248, 81, 73, 0.2);
+    color: var(--ct-danger);
+}
+
+/* ─── Mensagens globais ──────────────────────────────────────────────────── */
+.global-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--ct-radius-sm);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+    animation: fadeIn 0.25s ease both;
+}
+
+.global-message i {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    font-size: 1rem;
+}
+
+.global-message.error {
+    background: var(--ct-danger-dim);
+    border: 1px solid rgba(248, 81, 73, 0.25);
+    color: #ff8b87;
+}
+
+.global-message.success {
+    background: var(--ct-success-dim);
+    border: 1px solid rgba(63, 185, 80, 0.25);
+    color: #7ee787;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Formulário ─────────────────────────────────────────────────────────── */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.field-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ct-text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.field-label i {
+    font-size: 0.85rem;
+    color: var(--ct-text-subtle);
+}
+
+/* Input wrapper */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--ct-text-subtle);
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: color var(--ct-transition);
+    z-index: 2;
+}
+
+.field-input {
+    width: 100%;
+    background: var(--ct-surface);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius-sm);
+    color: var(--ct-text);
+    font-family: var(--ct-font-body);
+    font-size: 0.925rem;
+    padding: 0.7rem 1rem 0.7rem 2.75rem;
+    outline: none;
+    transition: border-color var(--ct-transition), background var(--ct-transition), box-shadow var(--ct-transition);
+    -webkit-appearance: none;
+}
+
+.field-input::placeholder {
+    color: var(--ct-text-subtle);
+    font-size: 0.875rem;
+}
+
+.field-input:hover:not(:focus) {
+    background: var(--ct-surface-hover);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.field-input:focus {
+    background: rgba(13, 110, 253, 0.06);
+    border-color: var(--ct-border-focus);
+    box-shadow: 0 0 0 3px var(--ct-primary-glow);
+}
+
+.field-input:focus+.btn-eye,
+.field-input:focus~.btn-eye {
+    color: var(--ct-primary);
+}
+
+/* Foco no ícone */
+.field-input:focus~.input-icon,
+.input-wrapper:focus-within .input-icon {
+    color: var(--ct-primary);
+}
+
+/* Válido / Inválido */
+.field-input.is-valid {
+    border-color: var(--ct-success);
+    background: rgba(63, 185, 80, 0.05);
+}
+
+.field-input.is-invalid {
+    border-color: var(--ct-danger);
+    background: var(--ct-danger-dim);
+    animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(3px);
+    }
+}
+
+/* Erro por campo */
+.field-error {
+    display: none;
+    font-size: 0.775rem;
+    color: var(--ct-danger);
+    padding-left: 0.25rem;
+    animation: fadeIn 0.2s ease both;
+}
+
+/* Botão olho */
+.btn-eye {
+    position: absolute;
+    right: 0.875rem;
+    background: none;
+    border: none;
+    color: var(--ct-text-subtle);
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 4px;
+    transition: color var(--ct-transition), background var(--ct-transition);
+    z-index: 2;
+}
+
+.btn-eye:hover {
+    color: var(--ct-text);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.btn-eye:focus-visible {
+    outline: 2px solid var(--ct-primary);
+    outline-offset: 2px;
+}
+
+/* Input com botão de olho tem padding extra */
+.field-input.has-toggle {
+    padding-right: 3rem;
+}
+
+/* ─── Link esqueceu senha ─────────────────────────────────────────────────── */
+.forgot-link {
+    text-align: right;
+    margin-top: -0.5rem;
+}
+
+.forgot-link a {
+    font-size: 0.8rem;
+    color: var(--ct-text-muted);
+    text-decoration: none;
+    transition: color var(--ct-transition);
+}
+
+.forgot-link a:hover {
+    color: var(--ct-primary);
+    text-decoration: underline;
+}
+
+/* ─── Botão principal ────────────────────────────────────────────────────── */
+.btn-auth {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: var(--ct-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--ct-radius-sm);
+    font-family: var(--ct-font-body);
+    font-size: 0.925rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: background var(--ct-transition), transform var(--ct-transition), box-shadow var(--ct-transition), opacity var(--ct-transition);
+}
+
+.btn-auth::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--ct-transition);
+}
+
+.btn-auth:hover:not(:disabled) {
+    background: #458ef6;
+    box-shadow: 0 6px 24px rgba(2, 102, 252, 0);
+    transform: translateY(-1px);
+}
+
+.btn-auth:hover:not(:disabled)::before {
+    opacity: 1;
+}
+
+.btn-auth:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-auth:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─── Toggle login/cadastro ─────────────────────────────────────────────── */
+.auth-toggle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ct-text-muted);
+    padding-top: 0.25rem;
+}
+
+.auth-toggle a {
+    color: var(--ct-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--ct-transition);
+}
+
+.auth-toggle a:hover {
+    color: #1582ff;
+    text-decoration: underline;
+}
+
+/* ─── Divisor ─────────────────────────────────────────────────────────────── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--ct-text-subtle);
+    font-size: 0.75rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--ct-border);
+}
+
+/* ─── Footer da página ────────────────────────────────────────────────────── */
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    color: var(--ct-text-subtle);
+    line-height: 1.6;
+}
+
+.auth-footer a {
+    color: var(--ct-text-subtle);
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    color: var(--ct-text-muted);
+}
+
+/* ─── Utilitário ─────────────────────────────────────────────────────────── */
+.hidden {
+    display: none !important;
+}
+
+/* ─── Responsividade ─────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .auth-title {
+        font-size: 1.25rem;
+    }
+
+    .ticker-bar {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ─── Focus visível (acessibilidade) ─────────────────────────────────────── */
+:focus-visible {
+    outline: 2px solid var(--ct-primary);
+    outline-offset: 2px;
+}
+
+a:focus-visible {
+    border-radius: 2px;
+}

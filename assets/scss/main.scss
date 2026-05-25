@@ -2,6 +2,7 @@
 @use "custom/variables" as *;
 @use "custom/mixins" as *;
 @use "custom/components" as *;
+@use "custom/layout" as *;
 
 // 2. Imports de bibliotecas externas (Bootstrap) vêm depois
 @import "../node_modules/bootstrap/scss/bootstrap";
