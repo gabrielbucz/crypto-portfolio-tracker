@@ -1,59 +1,90 @@
 /**
  * auth.js — Módulo de autenticação do CryptoTracker
- * Responsável por: login, cadastro, validação e requisições à API
- * Preparado para futura integração com backend real.
+ * Responsável por:
+ * - Login
+ * - Cadastro
+ * - Validação
+ * - Comunicação com API
  */
 
-// ─── Configuração da API ───────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Configuração da API
+// ─────────────────────────────────────────────
+
 const API_CONFIG = {
-    baseURL: "http://localhost:3000",
+    baseURL: 'http://localhost:3000',
+
     endpoints: {
-        users: "/users",
-    },
+        users: '/users'
+    }
 };
 
-// ─── Funções de Requisição (API Layer) ────────────────────────────────────
+// ─────────────────────────────────────────────
+// API Layer
+// ─────────────────────────────────────────────
+
 /**
  * Busca todos os usuários cadastrados.
  * @returns {Promise<Array>}
  */
 async function fetchUsers() {
-    const response = await fetch(`${API_CONFIG.baseURL}${API_CONFIG.endpoints.users}`);
-    if (!response.ok) throw new Error("Falha ao buscar usuários.");
+    const response = await fetch(
+        `${API_CONFIG.baseURL}${API_CONFIG.endpoints.users}`
+    );
+
+    if (!response.ok) {
+        throw new Error('Falha ao buscar usuários.');
+    }
+
     return response.json();
 }
 
 /**
- * Cria um novo usuário no banco de dados.
+ * Cria um novo usuário.
  * @param {{ name: string, email: string, password: string }} userData
  * @returns {Promise<Object>}
  */
 async function createUser(userData) {
-    const response = await fetch(`${API_CONFIG.baseURL}${API_CONFIG.endpoints.users}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            ...userData,
-            createdAt: new Date().toISOString(),
-        }),
-    });
-    if (!response.ok) throw new Error("Falha ao criar usuário.");
+    const response = await fetch(
+        `${API_CONFIG.baseURL}${API_CONFIG.endpoints.users}`,
+        {
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                ...userData,
+                createdAt: new Date().toISOString()
+            })
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error('Falha ao criar usuário.');
+    }
+
     return response.json();
 }
 
-// ─── Funções de Validação ─────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Validações
+// ─────────────────────────────────────────────
+
 /**
- * Valida formato de e-mail.
+ * Valida e-mail.
  * @param {string} email
  * @returns {boolean}
  */
 function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     return regex.test(email.trim());
 }
 
 /**
- * Valida senha (mínimo 6 caracteres).
+ * Valida senha.
  * @param {string} password
  * @returns {boolean}
  */
@@ -62,7 +93,7 @@ function validatePassword(password) {
 }
 
 /**
- * Valida nome completo (mínimo 2 palavras).
+ * Valida nome completo.
  * @param {string} name
  * @returns {boolean}
  */
@@ -70,9 +101,12 @@ function validateName(name) {
     return name.trim().split(/\s+/).length >= 2;
 }
 
-// ─── Função de Login ──────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Login
+// ─────────────────────────────────────────────
+
 /**
- * Autentica o usuário comparando e-mail e senha com o banco.
+ * Faz login do usuário.
  * @param {string} email
  * @param {string} password
  * @returns {Promise<{ success: boolean, user?: Object, error?: string }>}
@@ -80,31 +114,52 @@ function validateName(name) {
 async function login(email, password) {
     try {
         const users = await fetchUsers();
+
         const user = users.find(
-            (u) => u.email.toLowerCase() === email.toLowerCase().trim() && u.password === password
+            (u) =>
+                u.email.toLowerCase() === email.toLowerCase().trim() &&
+                u.password === password
         );
 
         if (!user) {
-            return { success: false, error: "E-mail ou senha incorretos." };
+            return {
+                success: false,
+                error: 'E-mail ou senha incorretos.'
+            };
         }
 
-        // Salva sessão (sem expor a senha)
-        const { password: _, ...safeUser } = user;
-        sessionStorage.setItem("cryptotracker_user", JSON.stringify(safeUser));
+        // Remove dados sensíveis
+        const safeUser = { ...user };
 
-        return { success: true, user: safeUser };
+        delete safeUser.password;
+        delete safeUser.email;
+
+        sessionStorage.setItem(
+            'cryptotracker_user',
+            JSON.stringify(safeUser)
+        );
+
+        return {
+            success: true,
+            user: safeUser
+        };
     } catch (err) {
-        console.error("[Auth] Erro ao fazer login:", err);
+        console.error('[Auth] Erro ao fazer login:', err);
+
         return {
             success: false,
-            error: "Não foi possível conectar ao servidor. Verifique se o json-server está rodando.",
+            error:
+                'Não foi possível conectar ao servidor. Verifique se o json-server está rodando.'
         };
     }
 }
 
-// ─── Função de Cadastro ───────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Cadastro
+// ─────────────────────────────────────────────
+
 /**
- * Registra um novo usuário após verificar duplicidade de e-mail.
+ * Registra um novo usuário.
  * @param {string} name
  * @param {string} email
  * @param {string} password
@@ -113,43 +168,80 @@ async function login(email, password) {
 async function register(name, email, password) {
     try {
         const users = await fetchUsers();
+
         const alreadyExists = users.some(
-            (u) => u.email.toLowerCase() === email.toLowerCase().trim()
+            (u) =>
+                u.email.toLowerCase() === email.toLowerCase().trim()
         );
 
         if (alreadyExists) {
-            return { success: false, error: "Este e-mail já está cadastrado." };
+            return {
+                success: false,
+                error: 'Este e-mail já está cadastrado.'
+            };
         }
 
-        const newUser = await createUser({ name: name.trim(), email: email.trim(), password });
-        const { password: _, ...safeUser } = newUser;
-        sessionStorage.setItem("cryptotracker_user", JSON.stringify(safeUser));
+        const newUser = await createUser({
+            name: name.trim(),
+            email: email.trim(),
+            password
+        });
 
-        return { success: true, user: safeUser };
+        // Remove senha antes de salvar sessão
+        const safeUser = { ...newUser };
+
+        delete safeUser.password;
+        delete safeUser.email;
+
+        sessionStorage.setItem(
+            'cryptotracker_user',
+            JSON.stringify(safeUser)
+        );
+
+        return {
+            success: true,
+            user: safeUser
+        };
     } catch (err) {
-        console.error("[Auth] Erro ao cadastrar:", err);
+        console.error('[Auth] Erro ao cadastrar:', err);
+
         return {
             success: false,
-            error: "Não foi possível conectar ao servidor. Verifique se o json-server está rodando.",
+            error:
+                'Não foi possível conectar ao servidor. Verifique se o json-server está rodando.'
         };
     }
 }
 
-// ─── Funções de Sessão ─────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Sessão
+// ─────────────────────────────────────────────
+
 /**
- * Retorna o usuário logado da sessão atual.
+ * Retorna usuário logado.
  * @returns {Object|null}
  */
 function getCurrentUser() {
-    const data = sessionStorage.getItem("cryptotracker_user");
+    const data = sessionStorage.getItem(
+        'cryptotracker_user'
+    );
+
     return data ? JSON.parse(data) : null;
 }
 
 /**
- * Encerra a sessão do usuário.
+ * Encerra sessão.
  */
 function logout() {
-    sessionStorage.removeItem("cryptotracker_user");
+    sessionStorage.removeItem('cryptotracker_user');
 }
 
-export { login, register, validateEmail, validatePassword, validateName, getCurrentUser, logout };
+export {
+    login,
+    register,
+    validateEmail,
+    validatePassword,
+    validateName,
+    getCurrentUser,
+    logout
+};

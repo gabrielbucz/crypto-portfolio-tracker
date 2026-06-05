@@ -17,6 +17,15 @@
       "current_price": 63.28,
       "price_change_percentage_24h": 9.78697,
       "id": "I8IiZLSbtks"
+    },
+    {
+      "coinId": "usds",
+      "name": "USDS",
+      "symbol": "usds",
+      "image": "https://coin-images.coingecko.com/coins/images/39926/large/usds.webp?1726666683",
+      "current_price": 0.999643,
+      "price_change_percentage_24h": -0.00691,
+      "id": "YAqyAUizQwE"
     }
   ],
   "transacoes": [
@@ -75,6 +84,13 @@
       "password": "123456",
       "createdAt": "2026-05-18T23:51:35.668Z",
       "id": "L_8Dj_JGf6w"
+    },
+    {
+      "name": "juca lino",
+      "email": "juca@gmail.com",
+      "password": "123456",
+      "createdAt": "2026-05-25T23:38:43.084Z",
+      "id": "NCGV1N-lSJ4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

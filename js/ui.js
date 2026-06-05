@@ -2,7 +2,7 @@
 
 
 // ==========================
-// CRIA CARD
+// CRIAR CARD
 // ==========================
 
 import { getCurrentUser, logout } from './auth.js';
@@ -25,10 +25,11 @@ function criarCard(moeda, favoritos = []) {
           <div class="d-flex align-items-center gap-2">
 
             <img 
-              src="${moeda.image}" 
-              alt="${moeda.name}" 
-              class="crypto-img"
-            >
+    src="${moeda.image}" 
+    alt="${moeda.name}" 
+    class="crypto-img img-fluid"
+    loading="lazy"
+>
 
             <div>
 

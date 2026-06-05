@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 .crypto-card {
   transition: all 0.2s ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.125) !important;
@@ -404,6 +406,14 @@ address {
   line-height: inherit;
 }
 
+.hero-img {
+  width: 50px;
+  
+  height: 80px;
+  object-fit: contain;
+  border-radius: 10 px;
+}
+
 ol,
 ul {
   padding-left: 2rem;
@@ -615,6 +625,7 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  appearance: button;
 }
 
 button:not(:disabled),
@@ -675,6 +686,7 @@ legend+* {
 
 [type=search] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -702,6 +714,7 @@ legend+* {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 output {

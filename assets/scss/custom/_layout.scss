@@ -2,6 +2,16 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.display-4 {
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
 .crypto-card {
     @include smooth-transition;
     border: 1px solid $card-border-color !important;
@@ -82,7 +92,7 @@ footer {
 .form-label-custom {
     display: block;
     font-size: 0.75rem;
-    color: $text-muted; // Usando sua variável do Sass
+    color: $text-muted; // Usando a do Sass
     margin-bottom: 0.25rem;
     font-weight: 500;
     white-space: nowrap;

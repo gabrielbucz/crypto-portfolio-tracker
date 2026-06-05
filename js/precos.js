@@ -6,7 +6,7 @@ import { mostrarMoedas } from './ui.js';
 export let moedasCache = [];
 
 
-// 🔹 CARREGAR PREÇOS (TOPO)
+//CARREGAR PREÇOS (TOPO)
 export async function carregarPrecos() {
     const container = document.getElementById("prices");
 
@@ -31,7 +31,7 @@ export async function carregarPrecos() {
 }
 
 
-// 🔹 RENDER PREÇOS
+//RENDER PREÇOS
 function renderPrecos(data) {
     return `
         <span class="coin">BTC: $${data.bitcoin?.usd ?? 'N/A'}</span>
@@ -43,7 +43,7 @@ function renderPrecos(data) {
 }
 
 
-// 🔹 CARREGAR MOEDAS (COM FAVORITOS)
+//CARREGAR MOEDAS (COM FAVORITOS)
 export async function carregarMoedas(favoritos = []) {
     try {
         const res = await fetch(

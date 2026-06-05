@@ -123,11 +123,9 @@ document.addEventListener("click", async (e) => {
         // Buscamos se já existe no banco usando o nosso campo customizado 'coinId'
         const favoritoEncontrado = favoritos.find(f => f.coinId === idCripto);
 
-        // REMOVE 
+        
+        // REMOVE
         if (favoritoEncontrado) {
-            // Mandamos o ID esquisito gerado pelo json-server que encontramos no banco
-            const arraySemIdRemovido = favoritos.filter(f => f.coinId !== idCripto)
-
             await removerFavorito(favoritoEncontrado.id);
         }
         // ADICIONA

@@ -92,7 +92,7 @@ togglePasswordBtn.addEventListener("click", () => {
 
 // ─── Validação em tempo real ───────────────────────────────────────────────
 function setFieldState(input, isValid, message = "") {
-    const wrapper = input.closest(".input-wrapper");
+
     const errorEl = input.closest(".field-group")?.querySelector(".field-error");
 
     input.classList.toggle("is-invalid", !isValid);
