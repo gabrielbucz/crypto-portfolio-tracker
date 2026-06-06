@@ -205,7 +205,7 @@ export function topBar() {
       `;
     document.getElementById('btnLogout').addEventListener('click', () => {
       logout();
-      window.location.href = 'login.html';
+      window.location.href = '/pages/login.html';
     });
   }
 }

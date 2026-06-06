@@ -14,7 +14,7 @@ import {
 
 // ─── Redirect se já estiver logado ────────────────────────────────────────
 if (getCurrentUser()) {
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 }
 
 // ─── Elementos do DOM ─────────────────────────────────────────────────────
@@ -215,7 +215,7 @@ form.addEventListener("submit", async (e) => {
                 : `Bem-vindo de volta, ${result.user.name}! Redirecionando...`
         );
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         }, 1800);
     } else {
         showGlobalError(result.error);
