@@ -5,7 +5,7 @@
 // CRIAR CARD
 // ==========================
 
-import { getCurrentUser, logout } from './auth.js';
+//import { getCurrentUser, logout } from './auth.js';
 function criarCard(moeda, favoritos = []) {
 
   // verifica se já está favoritado usando coinId (campo salvo no banco)
