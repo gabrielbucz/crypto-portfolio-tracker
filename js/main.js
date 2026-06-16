@@ -60,26 +60,26 @@ async function atualizar() {
 document.addEventListener("DOMContentLoaded", async () => {
 
     // HOME
-    if (
-        page.includes("index.html") ||
-        page === "/" ||
-        page === ""
-    ) {
+    /*  if (
+          page.includes("index.html") ||
+          page === "/" ||
+          page === ""
+      ) {*/
 
-        await atualizar();
+    await atualizar();
 
-        // atualiza automaticamente
-        setInterval(async () => {
+    // atualiza automaticamente
+    setInterval(async () => {
 
-            if (document.visibilityState === "visible") {
+        if (document.visibilityState === "visible") {
 
-                await atualizar();
+            await atualizar();
 
-            }
+        }
 
-        }, 180000);
+    }, 180000);
 
-    }
+
 
 
     // FAVORITOS
@@ -123,7 +123,7 @@ document.addEventListener("click", async (e) => {
         // Buscamos se já existe no banco usando o nosso campo customizado 'coinId'
         const favoritoEncontrado = favoritos.find(f => f.coinId === idCripto);
 
-        
+
         // REMOVE
         if (favoritoEncontrado) {
             await removerFavorito(favoritoEncontrado.id);

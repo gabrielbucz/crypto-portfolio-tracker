@@ -19,13 +19,13 @@
       "id": "I8IiZLSbtks"
     },
     {
-      "coinId": "usds",
-      "name": "USDS",
-      "symbol": "usds",
-      "image": "https://coin-images.coingecko.com/coins/images/39926/large/usds.webp?1726666683",
-      "current_price": 0.999643,
-      "price_change_percentage_24h": -0.00691,
-      "id": "YAqyAUizQwE"
+      "coinId": "ethereum",
+      "name": "Ethereum",
+      "symbol": "eth",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
+      "current_price": 1618.32,
+      "price_change_percentage_24h": 3.83675,
+      "id": "norbSMxeojk"
     }
   ],
   "transacoes": [
