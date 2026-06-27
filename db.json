@@ -68,6 +68,28 @@
       "preco": 90,
       "data": "2026-05-24",
       "id": "I4xkS1N-W_w"
+    },
+    {
+      "coinId": "solana",
+      "tipo": "venda",
+      "name": "Solana",
+      "symbol": "sol",
+      "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+      "quantidade": 2,
+      "preco": 72,
+      "data": "2026-06-09",
+      "id": "nAzCQzQM17U"
+    },
+    {
+      "coinId": "solana",
+      "tipo": "venda",
+      "name": "Solana",
+      "symbol": "sol",
+      "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+      "quantidade": 10,
+      "preco": 70,
+      "data": "2026-06-27",
+      "id": "FI3XpNNElpo"
     }
   ],
   "users": [

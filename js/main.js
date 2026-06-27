@@ -60,27 +60,27 @@ async function atualizar() {
 document.addEventListener("DOMContentLoaded", async () => {
 
     // HOME
-    /*  if (
-          page.includes("index.html") ||
-          page === "/" ||
-          page === ""
-      ) {*/
+    if (
+        page.includes("index.html") ||
+        page === "/" ||
+        page === ""
+    ) {
 
-    await atualizar();
+        await atualizar();
 
-    // atualiza automaticamente
-    setInterval(async () => {
+        // atualiza automaticamente
+        setInterval(async () => {
 
-        if (document.visibilityState === "visible") {
+            if (document.visibilityState === "visible") {
 
-            await atualizar();
+                await atualizar();
 
-        }
+            }
 
-    }, 180000);
+        }, 180000);
 
 
-
+    }
 
     // FAVORITOS
     if (page.includes("favoritos.html")) {
