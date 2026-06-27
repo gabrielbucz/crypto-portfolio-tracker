@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // HOME
     if (
         page.includes("index.html") ||
-        page === "/" ||
+        page.endsWith === ("/") ||
         page === ""
     ) {
 
