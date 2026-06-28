@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $('#select-moeda').on('change', function () {
         const moeda = $(this).find('option:selected').text();
-        $('#input-quantidade').attr('placeholder', `Qtd. de ${moeda.split('—')[1]?.trim() ?? 'moeda'}`);
+        $('#input-quantidade').attr('placeholder', `Qtd. de ${moeda.split('—')[0]?.trim() ?? 'moeda'}`);
     });
 
 });

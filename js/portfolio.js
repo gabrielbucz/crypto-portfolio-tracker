@@ -29,7 +29,6 @@ async function carregarMoedasSelect() {
     select.innerHTML = moedasMercado.map(m => `
       <option value="${m.id}">${m.symbol.toUpperCase()} — ${m.name}</option>
     `).join('');
-
     // ID 20 — evento via jQuery no select
     $('#select-moeda').on('change', function () {
       const moeda = moedasMercado.find(m => m.id === $(this).val());
@@ -341,7 +340,9 @@ function iniciarFormulario() {
 
     const coinId = select.value;
     const quantidade = parseFloat(qtdInput.value);
-    const preco = parseFloat(precoInput.value);
+    const preco = parseFloat(
+      precoInput.value.replace(/\./g, '').replace(',', '.')
+    );
     const data = dataInput.value;
 
     if (!coinId || isNaN(quantidade) || quantidade <= 0 || isNaN(preco) || preco <= 0 || !data) {

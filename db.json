@@ -90,6 +90,28 @@
       "preco": 70,
       "data": "2026-06-27",
       "id": "FI3XpNNElpo"
+    },
+    {
+      "coinId": "bitcoin",
+      "tipo": "venda",
+      "name": "Bitcoin",
+      "symbol": "btc",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+      "quantidade": 1,
+      "preco": 50000,
+      "data": "2026-06-09",
+      "id": "THehUyHK1CQ"
+    },
+    {
+      "coinId": "bitcoin",
+      "tipo": "compra",
+      "name": "Bitcoin",
+      "symbol": "btc",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+      "quantidade": 2,
+      "preco": 60000,
+      "data": "2026-06-02",
+      "id": "vW4aPAYkBVU"
     }
   ],
   "users": [

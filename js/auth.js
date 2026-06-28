@@ -93,7 +93,7 @@ function validatePassword(password) {
 }
 
 /**
- * Valida nome completo.
+ * Valida nome completo.        
  * @param {string} name
  * @returns {boolean}
  */
